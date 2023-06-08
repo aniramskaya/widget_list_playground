@@ -10,6 +10,19 @@
 		CC5CB3EB2A30814800DCE080 /* Widgets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC5CB3E22A30814800DCE080 /* Widgets.framework */; };
 		CC5CB3F02A30814800DCE080 /* WidgetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB3EF2A30814800DCE080 /* WidgetsTests.swift */; };
 		CC5CB3F12A30814800DCE080 /* Widgets.h in Headers */ = {isa = PBXBuildFile; fileRef = CC5CB3E52A30814800DCE080 /* Widgets.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC5CB3FB2A30815600DCE080 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB3FA2A30815600DCE080 /* Widget.swift */; };
+		CC5CB3FD2A3082C600DCE080 /* WidgetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB3FC2A3082C600DCE080 /* WidgetListViewController.swift */; };
+		CC5CB4062A30A1DA00DCE080 /* WidgetListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4052A30A1DA00DCE080 /* WidgetListDTO.swift */; };
+		CC5CB4082A30AA5F00DCE080 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4072A30AA5F00DCE080 /* Example.swift */; };
+		CC5CB40B2A31BB7100DCE080 /* UIWidgetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB40A2A31BB7100DCE080 /* UIWidgetLoader.swift */; };
+		CC5CB40F2A31BCA800DCE080 /* LoyaltyActionsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB40E2A31BCA800DCE080 /* LoyaltyActionsWidget.swift */; };
+		CC5CB4152A31BEA400DCE080 /* LoadResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4132A31BEA400DCE080 /* LoadResourceViewController.swift */; };
+		CC5CB4162A31BEA400DCE080 /* LoadResourcePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4142A31BEA400DCE080 /* LoadResourcePresenter.swift */; };
+		CC5CB4182A31BED800DCE080 /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4172A31BED800DCE080 /* PlaceholderViewController.swift */; };
+		CC5CB41A2A31DB7B00DCE080 /* CdekIdWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4192A31DB7B00DCE080 /* CdekIdWidget.swift */; };
+		CC5CB41C2A31DD6000DCE080 /* UserProfileWidgetDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB41B2A31DD6000DCE080 /* UserProfileWidgetDTO.swift */; };
+		CC5CB4232A320AED00DCE080 /* WidgetListLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4222A320AED00DCE080 /* WidgetListLoader.swift */; };
+		CC5CB4252A320B6400DCE080 /* UIWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4242A320B6400DCE080 /* UIWidget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +40,19 @@
 		CC5CB3E52A30814800DCE080 /* Widgets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Widgets.h; sourceTree = "<group>"; };
 		CC5CB3EA2A30814800DCE080 /* WidgetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WidgetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5CB3EF2A30814800DCE080 /* WidgetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsTests.swift; sourceTree = "<group>"; };
+		CC5CB3FA2A30815600DCE080 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
+		CC5CB3FC2A3082C600DCE080 /* WidgetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListViewController.swift; sourceTree = "<group>"; };
+		CC5CB4052A30A1DA00DCE080 /* WidgetListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListDTO.swift; sourceTree = "<group>"; };
+		CC5CB4072A30AA5F00DCE080 /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		CC5CB40A2A31BB7100DCE080 /* UIWidgetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWidgetLoader.swift; sourceTree = "<group>"; };
+		CC5CB40E2A31BCA800DCE080 /* LoyaltyActionsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyActionsWidget.swift; sourceTree = "<group>"; };
+		CC5CB4132A31BEA400DCE080 /* LoadResourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadResourceViewController.swift; sourceTree = "<group>"; };
+		CC5CB4142A31BEA400DCE080 /* LoadResourcePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadResourcePresenter.swift; sourceTree = "<group>"; };
+		CC5CB4172A31BED800DCE080 /* PlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
+		CC5CB4192A31DB7B00DCE080 /* CdekIdWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CdekIdWidget.swift; sourceTree = "<group>"; };
+		CC5CB41B2A31DD6000DCE080 /* UserProfileWidgetDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileWidgetDTO.swift; sourceTree = "<group>"; };
+		CC5CB4222A320AED00DCE080 /* WidgetListLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListLoader.swift; sourceTree = "<group>"; };
+		CC5CB4242A320B6400DCE080 /* UIWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWidget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +77,7 @@
 		CC5CB3D82A30814800DCE080 = {
 			isa = PBXGroup;
 			children = (
-				CC5CB3E42A30814800DCE080 /* Widgets */,
+				CC5CB3E42A30814800DCE080 /* Modules */,
 				CC5CB3EE2A30814800DCE080 /* WidgetsTests */,
 				CC5CB3E32A30814800DCE080 /* Products */,
 			);
@@ -66,12 +92,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CC5CB3E42A30814800DCE080 /* Widgets */ = {
+		CC5CB3E42A30814800DCE080 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CC5CB4102A31BE1300DCE080 /* MainApp */,
+				CC5CB4092A31BB5100DCE080 /* CDEKUI */,
+				CC5CB40D2A31BC6D00DCE080 /* Loyalty */,
 				CC5CB3E52A30814800DCE080 /* Widgets.h */,
 			);
-			path = Widgets;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		CC5CB3EE2A30814800DCE080 /* WidgetsTests */ = {
@@ -80,6 +109,56 @@
 				CC5CB3EF2A30814800DCE080 /* WidgetsTests.swift */,
 			);
 			path = WidgetsTests;
+			sourceTree = "<group>";
+		};
+		CC5CB4092A31BB5100DCE080 /* CDEKUI */ = {
+			isa = PBXGroup;
+			children = (
+				CC5CB4122A31BE5F00DCE080 /* ResourceLoadingViewController */,
+				CC5CB4112A31BE5000DCE080 /* Widget */,
+			);
+			path = CDEKUI;
+			sourceTree = "<group>";
+		};
+		CC5CB40D2A31BC6D00DCE080 /* Loyalty */ = {
+			isa = PBXGroup;
+			children = (
+				CC5CB40E2A31BCA800DCE080 /* LoyaltyActionsWidget.swift */,
+				CC5CB4192A31DB7B00DCE080 /* CdekIdWidget.swift */,
+			);
+			path = Loyalty;
+			sourceTree = "<group>";
+		};
+		CC5CB4102A31BE1300DCE080 /* MainApp */ = {
+			isa = PBXGroup;
+			children = (
+				CC5CB4072A30AA5F00DCE080 /* Example.swift */,
+				CC5CB41B2A31DD6000DCE080 /* UserProfileWidgetDTO.swift */,
+			);
+			path = MainApp;
+			sourceTree = "<group>";
+		};
+		CC5CB4112A31BE5000DCE080 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				CC5CB3FA2A30815600DCE080 /* Widget.swift */,
+				CC5CB4242A320B6400DCE080 /* UIWidget.swift */,
+				CC5CB40A2A31BB7100DCE080 /* UIWidgetLoader.swift */,
+				CC5CB4222A320AED00DCE080 /* WidgetListLoader.swift */,
+				CC5CB3FC2A3082C600DCE080 /* WidgetListViewController.swift */,
+				CC5CB4052A30A1DA00DCE080 /* WidgetListDTO.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		CC5CB4122A31BE5F00DCE080 /* ResourceLoadingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CC5CB4132A31BEA400DCE080 /* LoadResourceViewController.swift */,
+				CC5CB4142A31BEA400DCE080 /* LoadResourcePresenter.swift */,
+				CC5CB4172A31BED800DCE080 /* PlaceholderViewController.swift */,
+			);
+			path = ResourceLoadingViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +223,7 @@
 				TargetAttributes = {
 					CC5CB3E12A30814800DCE080 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 					};
 					CC5CB3E92A30814800DCE080 = {
 						CreatedOnToolsVersion = 14.2;
@@ -191,6 +271,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5CB3FD2A3082C600DCE080 /* WidgetListViewController.swift in Sources */,
+				CC5CB4062A30A1DA00DCE080 /* WidgetListDTO.swift in Sources */,
+				CC5CB40F2A31BCA800DCE080 /* LoyaltyActionsWidget.swift in Sources */,
+				CC5CB41C2A31DD6000DCE080 /* UserProfileWidgetDTO.swift in Sources */,
+				CC5CB4152A31BEA400DCE080 /* LoadResourceViewController.swift in Sources */,
+				CC5CB3FB2A30815600DCE080 /* Widget.swift in Sources */,
+				CC5CB40B2A31BB7100DCE080 /* UIWidgetLoader.swift in Sources */,
+				CC5CB4162A31BEA400DCE080 /* LoadResourcePresenter.swift in Sources */,
+				CC5CB41A2A31DB7B00DCE080 /* CdekIdWidget.swift in Sources */,
+				CC5CB4232A320AED00DCE080 /* WidgetListLoader.swift in Sources */,
+				CC5CB4182A31BED800DCE080 /* PlaceholderViewController.swift in Sources */,
+				CC5CB4082A30AA5F00DCE080 /* Example.swift in Sources */,
+				CC5CB4252A320B6400DCE080 /* UIWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +429,7 @@
 		CC5CB3F52A30814800DCE080 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -355,6 +449,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -363,6 +458,7 @@
 		CC5CB3F62A30814800DCE080 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -390,6 +486,7 @@
 		CC5CB3F82A30814800DCE080 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -405,6 +502,7 @@
 		CC5CB3F92A30814800DCE080 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

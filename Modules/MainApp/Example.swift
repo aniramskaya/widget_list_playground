@@ -39,7 +39,7 @@ enum UserProfileBuilder {
             widgets
         }
         
-        let widgetListLoader = WidgetListLoader()
+        let widgetListLoader = MandatorySynchronizer()
         
         viewController.onDidLoad = {
             presenter.didStartLoading()

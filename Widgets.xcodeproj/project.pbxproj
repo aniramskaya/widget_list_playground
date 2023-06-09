@@ -21,8 +21,9 @@
 		CC5CB4182A31BED800DCE080 /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4172A31BED800DCE080 /* PlaceholderViewController.swift */; };
 		CC5CB41A2A31DB7B00DCE080 /* CdekIdWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4192A31DB7B00DCE080 /* CdekIdWidget.swift */; };
 		CC5CB41C2A31DD6000DCE080 /* UserProfileWidgetDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB41B2A31DD6000DCE080 /* UserProfileWidgetDTO.swift */; };
-		CC5CB4232A320AED00DCE080 /* WidgetListLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4222A320AED00DCE080 /* WidgetListLoader.swift */; };
+		CC5CB4232A320AED00DCE080 /* MandatorySynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4222A320AED00DCE080 /* MandatorySynchronizer.swift */; };
 		CC5CB4252A320B6400DCE080 /* UIWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4242A320B6400DCE080 /* UIWidget.swift */; };
+		CC5CB4362A33146F00DCE080 /* WidgetListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4352A33146F00DCE080 /* WidgetListController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +52,9 @@
 		CC5CB4172A31BED800DCE080 /* PlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
 		CC5CB4192A31DB7B00DCE080 /* CdekIdWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CdekIdWidget.swift; sourceTree = "<group>"; };
 		CC5CB41B2A31DD6000DCE080 /* UserProfileWidgetDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileWidgetDTO.swift; sourceTree = "<group>"; };
-		CC5CB4222A320AED00DCE080 /* WidgetListLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListLoader.swift; sourceTree = "<group>"; };
+		CC5CB4222A320AED00DCE080 /* MandatorySynchronizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandatorySynchronizer.swift; sourceTree = "<group>"; };
 		CC5CB4242A320B6400DCE080 /* UIWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWidget.swift; sourceTree = "<group>"; };
+		CC5CB4352A33146F00DCE080 /* WidgetListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				CC5CB4102A31BE1300DCE080 /* MainApp */,
 				CC5CB4092A31BB5100DCE080 /* CDEKUI */,
+				CC5CB4372A33270C00DCE080 /* bricks */,
 				CC5CB40D2A31BC6D00DCE080 /* Loyalty */,
 				CC5CB3E52A30814800DCE080 /* Widgets.h */,
 			);
@@ -144,7 +147,7 @@
 				CC5CB3FA2A30815600DCE080 /* Widget.swift */,
 				CC5CB4242A320B6400DCE080 /* UIWidget.swift */,
 				CC5CB40A2A31BB7100DCE080 /* UIWidgetLoader.swift */,
-				CC5CB4222A320AED00DCE080 /* WidgetListLoader.swift */,
+				CC5CB4352A33146F00DCE080 /* WidgetListController.swift */,
 				CC5CB3FC2A3082C600DCE080 /* WidgetListViewController.swift */,
 				CC5CB4052A30A1DA00DCE080 /* WidgetListDTO.swift */,
 			);
@@ -159,6 +162,14 @@
 				CC5CB4172A31BED800DCE080 /* PlaceholderViewController.swift */,
 			);
 			path = ResourceLoadingViewController;
+			sourceTree = "<group>";
+		};
+		CC5CB4372A33270C00DCE080 /* bricks */ = {
+			isa = PBXGroup;
+			children = (
+				CC5CB4222A320AED00DCE080 /* MandatorySynchronizer.swift */,
+			);
+			path = bricks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,9 +289,10 @@
 				CC5CB4152A31BEA400DCE080 /* LoadResourceViewController.swift in Sources */,
 				CC5CB3FB2A30815600DCE080 /* Widget.swift in Sources */,
 				CC5CB40B2A31BB7100DCE080 /* UIWidgetLoader.swift in Sources */,
+				CC5CB4362A33146F00DCE080 /* WidgetListController.swift in Sources */,
 				CC5CB4162A31BEA400DCE080 /* LoadResourcePresenter.swift in Sources */,
 				CC5CB41A2A31DB7B00DCE080 /* CdekIdWidget.swift in Sources */,
-				CC5CB4232A320AED00DCE080 /* WidgetListLoader.swift in Sources */,
+				CC5CB4232A320AED00DCE080 /* MandatorySynchronizer.swift in Sources */,
 				CC5CB4182A31BED800DCE080 /* PlaceholderViewController.swift in Sources */,
 				CC5CB4082A30AA5F00DCE080 /* Example.swift in Sources */,
 				CC5CB4252A320B6400DCE080 /* UIWidget.swift in Sources */,

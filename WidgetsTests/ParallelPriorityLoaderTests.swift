@@ -119,6 +119,22 @@ class ParallelPriorityLoaderTests: XCTestCase {
         assertEqual(result: load1Result, expected: .failure(ParallelizedLoaderError.requredLoadingFailed))
         assertEqual(result: load2Result, expected: .success([high2Success, med2Success, nil]))
     }
+    
+    func test_load_doesNotCallCompleteWhenSUTDeallocated() {
+        var sut: ParallelPriorityLoader<UUID, NSError>? = ParallelPriorityLoader<UUID, NSError>()
+        
+        let (high, med, low) = makeItems()
+        
+        var completionCallCount = 0
+        sut!.load(items: [high, med, low].erased, mandatoryPriority: .custom(Constants.mandtoryPriority), timeout: 0.5) { result in
+            completionCallCount += 1
+        }
+        sut = nil
+        
+        high.complete(with: .success(UUID()))
+        
+        XCTAssertEqual(completionCallCount, 0)
+    }
 
     private func makeItems() -> (ParallelPriorityItemSpy, ParallelPriorityItemSpy, ParallelPriorityItemSpy) {
         return (

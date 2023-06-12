@@ -5,6 +5,8 @@
 //  Created by Марина Чемезова on 07.06.2023.
 //
 
+import UIKit
+
 /*
         Требования:
  
@@ -22,43 +24,33 @@ protocol UserProfileWidgetsDTOLoader {
     func load(_ completion: @escaping (Result<WidgetListDTO<UserProfileWidgetDTO>, Error>) -> Void)
 }
 
+
+typealias StackViewResourceController = LoadResourceViewController<StackViewController, Swift.Error>
+
+extension LoadResourcePresenter: WidgetListPresenter where Resource == [UIViewController], View == StackViewResourceController, MessageView == StackViewResourceController {}
+
 enum UserProfileBuilder {
     static func build(dtoLoader: UserProfileWidgetsDTOLoader){
-        let widgetListController = WidgetListViewController()
-        
-        let viewController = LoadResourceViewController<WidgetListViewController, Swift.Error>()
+        let viewController = LoadResourceViewController<StackViewController, Swift.Error>()
         viewController.loadingController = LoadingViewController()
         viewController.messageController = PlaceholderViewController()
-        viewController.contentController = widgetListController
+        viewController.contentController = StackViewController()
         
         let presenter = LoadResourcePresenter(
             resourceView: viewController,
             loadingView: viewController,
             messageView: viewController
-        ) { (widgets: [any UIWidget]) in
+        ) { (widgets: [UIViewController]) in
             widgets
         }
         
-        let widgetListLoader = MandatorySynchronizer()
+        let widgetListLoader = UserProfileWidgetListLoaderAdapter(dtoLoader: dtoLoader)
         
-        viewController.onDidLoad = {
-            presenter.didStartLoading()
-            dtoLoader.load { result in
-                switch result {
-                case let .success(dto):
-                    let widgetLoaders = dto.widgets.map { $0.widgetLoader }
-                    widgetListLoader.load(items: widgetLoaders, timeout: 1.0) { result in
-                        switch result {
-                        case let .success(widgets):
-                            presenter.didFinishLoading(with: widgets)
-                        case let .failure(error):
-                            presenter.didFinishLoading(with: error)
-                        }
-                    }
-                case let .failure(error):
-                    presenter.didFinishLoading(with: error)
-                }
-            }
-        }
+        let widgetListController = WidgetListController(
+            loader: widgetListLoader,
+            presenter: presenter
+        )
+        
+        viewController.onDidLoad = widgetListController.load
     }
 }

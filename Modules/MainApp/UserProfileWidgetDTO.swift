@@ -5,7 +5,7 @@
 //  Created by Марина Чемезова on 08.06.2023.
 //
 
-import Foundation
+import UIKit
 
 enum UserProfileWidgetDTO: Decodable {
     private enum WidgetType: Decodable {
@@ -33,12 +33,12 @@ enum UserProfileWidgetDTO: Decodable {
 }
 
 extension UserProfileWidgetDTO {
-    var widgetLoader: UIWidgetLoader {
+    var widgetLoader: AnyPriorityLoadingItemBox<AnyWidgetBox<UIViewController>, Error> {
         switch self {
         case let .loyaltyActions(dto):
-            return LoyaltyActionsWidgetLoader(isMandatory: true, url: dto.url)
+            return LoyaltyActionsWidgetLoader(url: dto.url).eraseToAnyPriorityLoadingItem()
         case .cdekId:
-            return CdekIdWidgetLoader(isMandatory: true)
+            return CdekIdWidgetLoader().eraseToAnyPriorityLoadingItem()
         }
     }
 }

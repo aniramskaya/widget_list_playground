@@ -11,19 +11,22 @@
 		CC5CB3F02A30814800DCE080 /* WidgetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB3EF2A30814800DCE080 /* WidgetsTests.swift */; };
 		CC5CB3F12A30814800DCE080 /* Widgets.h in Headers */ = {isa = PBXBuildFile; fileRef = CC5CB3E52A30814800DCE080 /* Widgets.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC5CB3FB2A30815600DCE080 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB3FA2A30815600DCE080 /* Widget.swift */; };
-		CC5CB3FD2A3082C600DCE080 /* WidgetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB3FC2A3082C600DCE080 /* WidgetListViewController.swift */; };
+		CC5CB3FD2A3082C600DCE080 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB3FC2A3082C600DCE080 /* StackViewController.swift */; };
 		CC5CB4062A30A1DA00DCE080 /* WidgetListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4052A30A1DA00DCE080 /* WidgetListDTO.swift */; };
 		CC5CB4082A30AA5F00DCE080 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4072A30AA5F00DCE080 /* Example.swift */; };
-		CC5CB40B2A31BB7100DCE080 /* UIWidgetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB40A2A31BB7100DCE080 /* UIWidgetLoader.swift */; };
 		CC5CB40F2A31BCA800DCE080 /* LoyaltyActionsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB40E2A31BCA800DCE080 /* LoyaltyActionsWidget.swift */; };
 		CC5CB4152A31BEA400DCE080 /* LoadResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4132A31BEA400DCE080 /* LoadResourceViewController.swift */; };
 		CC5CB4162A31BEA400DCE080 /* LoadResourcePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4142A31BEA400DCE080 /* LoadResourcePresenter.swift */; };
 		CC5CB4182A31BED800DCE080 /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4172A31BED800DCE080 /* PlaceholderViewController.swift */; };
 		CC5CB41A2A31DB7B00DCE080 /* CdekIdWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4192A31DB7B00DCE080 /* CdekIdWidget.swift */; };
 		CC5CB41C2A31DD6000DCE080 /* UserProfileWidgetDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB41B2A31DD6000DCE080 /* UserProfileWidgetDTO.swift */; };
-		CC5CB4232A320AED00DCE080 /* MandatorySynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4222A320AED00DCE080 /* MandatorySynchronizer.swift */; };
-		CC5CB4252A320B6400DCE080 /* UIWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4242A320B6400DCE080 /* UIWidget.swift */; };
+		CC5CB4232A320AED00DCE080 /* ParallelizedLoaderWithPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4222A320AED00DCE080 /* ParallelizedLoaderWithPriority.swift */; };
 		CC5CB4362A33146F00DCE080 /* WidgetListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB4352A33146F00DCE080 /* WidgetListController.swift */; };
+		CC9A47F22A334905005EB35F /* UserProfileWidgetListLoaderAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A47F12A334905005EB35F /* UserProfileWidgetListLoaderAdapter.swift */; };
+		CC9A47F42A345559005EB35F /* WidgetListLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A47F32A345559005EB35F /* WidgetListLoader.swift */; };
+		CC9A47F62A345584005EB35F /* WidgetListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A47F52A345584005EB35F /* WidgetListPresenter.swift */; };
+		CCB6EDCC2A3342C300676C34 /* LoyaltyActionsWidgetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB6EDCB2A3342C300676C34 /* LoyaltyActionsWidgetLoader.swift */; };
+		CCB6EDCE2A3342E000676C34 /* CdekIdWidgetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB6EDCD2A3342E000676C34 /* CdekIdWidgetLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,19 +45,22 @@
 		CC5CB3EA2A30814800DCE080 /* WidgetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WidgetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5CB3EF2A30814800DCE080 /* WidgetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsTests.swift; sourceTree = "<group>"; };
 		CC5CB3FA2A30815600DCE080 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
-		CC5CB3FC2A3082C600DCE080 /* WidgetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListViewController.swift; sourceTree = "<group>"; };
+		CC5CB3FC2A3082C600DCE080 /* StackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
 		CC5CB4052A30A1DA00DCE080 /* WidgetListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListDTO.swift; sourceTree = "<group>"; };
 		CC5CB4072A30AA5F00DCE080 /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
-		CC5CB40A2A31BB7100DCE080 /* UIWidgetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWidgetLoader.swift; sourceTree = "<group>"; };
 		CC5CB40E2A31BCA800DCE080 /* LoyaltyActionsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyActionsWidget.swift; sourceTree = "<group>"; };
 		CC5CB4132A31BEA400DCE080 /* LoadResourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadResourceViewController.swift; sourceTree = "<group>"; };
 		CC5CB4142A31BEA400DCE080 /* LoadResourcePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadResourcePresenter.swift; sourceTree = "<group>"; };
 		CC5CB4172A31BED800DCE080 /* PlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
 		CC5CB4192A31DB7B00DCE080 /* CdekIdWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CdekIdWidget.swift; sourceTree = "<group>"; };
 		CC5CB41B2A31DD6000DCE080 /* UserProfileWidgetDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileWidgetDTO.swift; sourceTree = "<group>"; };
-		CC5CB4222A320AED00DCE080 /* MandatorySynchronizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandatorySynchronizer.swift; sourceTree = "<group>"; };
-		CC5CB4242A320B6400DCE080 /* UIWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWidget.swift; sourceTree = "<group>"; };
+		CC5CB4222A320AED00DCE080 /* ParallelizedLoaderWithPriority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelizedLoaderWithPriority.swift; sourceTree = "<group>"; };
 		CC5CB4352A33146F00DCE080 /* WidgetListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListController.swift; sourceTree = "<group>"; };
+		CC9A47F12A334905005EB35F /* UserProfileWidgetListLoaderAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileWidgetListLoaderAdapter.swift; sourceTree = "<group>"; };
+		CC9A47F32A345559005EB35F /* WidgetListLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListLoader.swift; sourceTree = "<group>"; };
+		CC9A47F52A345584005EB35F /* WidgetListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetListPresenter.swift; sourceTree = "<group>"; };
+		CCB6EDCB2A3342C300676C34 /* LoyaltyActionsWidgetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyActionsWidgetLoader.swift; sourceTree = "<group>"; };
+		CCB6EDCD2A3342E000676C34 /* CdekIdWidgetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CdekIdWidgetLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,9 @@
 			children = (
 				CC5CB4072A30AA5F00DCE080 /* Example.swift */,
 				CC5CB41B2A31DD6000DCE080 /* UserProfileWidgetDTO.swift */,
+				CC9A47F12A334905005EB35F /* UserProfileWidgetListLoaderAdapter.swift */,
+				CCB6EDCB2A3342C300676C34 /* LoyaltyActionsWidgetLoader.swift */,
+				CCB6EDCD2A3342E000676C34 /* CdekIdWidgetLoader.swift */,
 			);
 			path = MainApp;
 			sourceTree = "<group>";
@@ -145,10 +154,10 @@
 			isa = PBXGroup;
 			children = (
 				CC5CB3FA2A30815600DCE080 /* Widget.swift */,
-				CC5CB4242A320B6400DCE080 /* UIWidget.swift */,
-				CC5CB40A2A31BB7100DCE080 /* UIWidgetLoader.swift */,
+				CC9A47F52A345584005EB35F /* WidgetListPresenter.swift */,
+				CC9A47F32A345559005EB35F /* WidgetListLoader.swift */,
 				CC5CB4352A33146F00DCE080 /* WidgetListController.swift */,
-				CC5CB3FC2A3082C600DCE080 /* WidgetListViewController.swift */,
+				CC5CB3FC2A3082C600DCE080 /* StackViewController.swift */,
 				CC5CB4052A30A1DA00DCE080 /* WidgetListDTO.swift */,
 			);
 			path = Widget;
@@ -167,7 +176,7 @@
 		CC5CB4372A33270C00DCE080 /* bricks */ = {
 			isa = PBXGroup;
 			children = (
-				CC5CB4222A320AED00DCE080 /* MandatorySynchronizer.swift */,
+				CC5CB4222A320AED00DCE080 /* ParallelizedLoaderWithPriority.swift */,
 			);
 			path = bricks;
 			sourceTree = "<group>";
@@ -282,20 +291,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC5CB3FD2A3082C600DCE080 /* WidgetListViewController.swift in Sources */,
+				CC5CB3FD2A3082C600DCE080 /* StackViewController.swift in Sources */,
+				CC9A47F22A334905005EB35F /* UserProfileWidgetListLoaderAdapter.swift in Sources */,
 				CC5CB4062A30A1DA00DCE080 /* WidgetListDTO.swift in Sources */,
+				CCB6EDCE2A3342E000676C34 /* CdekIdWidgetLoader.swift in Sources */,
 				CC5CB40F2A31BCA800DCE080 /* LoyaltyActionsWidget.swift in Sources */,
 				CC5CB41C2A31DD6000DCE080 /* UserProfileWidgetDTO.swift in Sources */,
 				CC5CB4152A31BEA400DCE080 /* LoadResourceViewController.swift in Sources */,
 				CC5CB3FB2A30815600DCE080 /* Widget.swift in Sources */,
-				CC5CB40B2A31BB7100DCE080 /* UIWidgetLoader.swift in Sources */,
+				CC9A47F62A345584005EB35F /* WidgetListPresenter.swift in Sources */,
+				CC9A47F42A345559005EB35F /* WidgetListLoader.swift in Sources */,
 				CC5CB4362A33146F00DCE080 /* WidgetListController.swift in Sources */,
 				CC5CB4162A31BEA400DCE080 /* LoadResourcePresenter.swift in Sources */,
 				CC5CB41A2A31DB7B00DCE080 /* CdekIdWidget.swift in Sources */,
-				CC5CB4232A320AED00DCE080 /* MandatorySynchronizer.swift in Sources */,
+				CC5CB4232A320AED00DCE080 /* ParallelizedLoaderWithPriority.swift in Sources */,
+				CCB6EDCC2A3342C300676C34 /* LoyaltyActionsWidgetLoader.swift in Sources */,
 				CC5CB4182A31BED800DCE080 /* PlaceholderViewController.swift in Sources */,
 				CC5CB4082A30AA5F00DCE080 /* Example.swift in Sources */,
-				CC5CB4252A320B6400DCE080 /* UIWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,8 +8,7 @@
 import UIKit
 import Combine
 
-class CdekIdWidget: UIViewController, UIWidget {
-    typealias Model = URL
+class CdekIdWidget: UIViewController, Widget {
     var ui: UIViewController { self }
     
     var isDisplaying = CurrentValueSubject<Bool, Never>(false)
@@ -18,17 +17,5 @@ class CdekIdWidget: UIViewController, UIWidget {
         DispatchQueue.main.asyncAfter(deadline: .now().advanced(by: .milliseconds(500)), execute: DispatchWorkItem(block: {
             completion(nil)
         }))
-    }
-}
-
-class CdekIdWidgetLoader: UIWidgetLoader {
-    let isMandatory: Bool
-    
-    init(isMandatory: Bool) {
-        self.isMandatory = isMandatory
-    }
-    
-    func load(_ completion: @escaping (Result<any UIWidget, Error>) -> Void) {
-        completion(.success(CdekIdWidget()))
     }
 }

@@ -17,11 +17,10 @@ import Widgets
  [✅] Передаем 3 элемента с приоритетом ниже mandatory, равный ему и выше. Завершаем ошибкой загрузку того, что выше mandatory, проверяем что загрузка завершилась ошибкой.
  [✅] Передаем 3 элемента с приоритетом ниже mandatory, равный ему и выше. Завершаем ошибкой загрузку того, что равен mandatory, проверяем что загрузка завершилась ошибкой.
  [✅] Передаем 3 элемента с приоритетом ниже mandatory, равный ему и выше. Завершаем ошибкой загрузку того, что ниже mandatory, проверяем что загрузка не завершена.
- [✅] Передаем 3 элемента с приоритетом ниже mandatory, равный ему и выше. Ждем таймаут. Проверяем что загрузка завершилась ошибкой.
- [✅] Передаем 3 элемента с приоритетом ниже mandatory, равный ему и выше. Завершаем загрузку того, что выше mandatory, проверяем что загрузка не завершена. Завершаем загрузку того, что равен mandatory - проверяем что загрузка завершена. Завершаем загрузку последнего - никаких новых действий не происходит.
+ [✅] Передаем 3 элемента с приоритетом ниже mandatory, равный ему и выше. Завершаем загрузку того, что ниже mandatory. Проверяем что загрузка завершилась ошибкой таймаута.
  
  ### Проверки независимости запросов
- [] Запускаем 2 загрузки. Проверяем что когда одна из них завершилась, вторая все еще идет.
+ [✅] Запускаем 2 загрузки. Проверяем что они дают разные результаты при разных исходах загрузки элементов
 
  */
 
@@ -90,6 +89,37 @@ class ParallelPriorityLoaderTests: XCTestCase {
         )
     }
 
+    func test_loadTwice_deliversDistinctResults() {
+        let sut = ParallelPriorityLoader<UUID, NSError>()
+
+        let (high1, med1, low1) = makeItems()
+        let (high2, med2, low2) = makeItems()
+        
+        let exp = expectation(description: "Wait for loading to complete")
+        exp.expectedFulfillmentCount = 2
+        
+        var load1Result: Result<[UUID?], Error>?
+        sut.load(items: [high1, med1, low1].erased, mandatoryPriority: .custom(Constants.mandtoryPriority), timeout: 0.5) { result in
+            load1Result = result
+            exp.fulfill()
+        }
+        var load2Result: Result<[UUID?], Error>?
+        sut.load(items: [high2, med2, low2].erased, mandatoryPriority: .custom(Constants.mandtoryPriority), timeout: 0.5) { result in
+            load2Result = result
+            exp.fulfill()
+        }
+        high1.complete(with: .failure(NSError.any()))
+        let high2Success = UUID()
+        let med2Success = UUID()
+        high2.complete(with: .success(high2Success))
+        med2.complete(with: .success(med2Success))
+        
+        wait(for: [exp], timeout: 1.0)
+
+        assertEqual(result: load1Result, expected: .failure(ParallelizedLoaderError.requredLoadingFailed))
+        assertEqual(result: load2Result, expected: .success([high2Success, med2Success, nil]))
+    }
+
     private func makeItems() -> (ParallelPriorityItemSpy, ParallelPriorityItemSpy, ParallelPriorityItemSpy) {
         return (
             ParallelPriorityItemSpy(priority: .custom(Constants.mandtoryPriority + 1)),
@@ -104,15 +134,8 @@ class ParallelPriorityLoaderTests: XCTestCase {
             items: items,
             mandatoryPriority: .custom(Constants.mandtoryPriority),
             timeout: timeout
-        ) { result in
-            switch (result, expectedResult) {
-            case let (.failure(error), .failure(expectedError)):
-                XCTAssertEqual(error as NSError, expectedError as NSError)
-            case let (.success(value), .success(expectedValue)):
-                XCTAssertEqual(value, expectedValue)
-            default:
-                XCTFail("Expected \(expectedResult) got \(result) instead")
-            }
+        ) { [weak self] result in
+            self?.assertEqual(result: result, expected: expectedResult)
             exp.fulfill()
         }
         action()
@@ -120,6 +143,21 @@ class ParallelPriorityLoaderTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
 
+    private func assertEqual(result: Result<[UUID?], Error>?, expected: Result<[UUID?], Error>) {
+        guard let result else {
+            XCTFail("Expected non-nil result")
+            return
+        }
+        switch (result, expected) {
+        case let (.failure(error), .failure(expectedError)):
+            XCTAssertEqual(error as NSError, expectedError as NSError)
+        case let (.success(value), .success(expectedValue)):
+            XCTAssertEqual(value, expectedValue)
+        default:
+            XCTFail("Expected \(expected) got \(result) instead")
+        }
+    }
+    
 }
 
 private extension Array where Element == ParallelPriorityItemSpy {

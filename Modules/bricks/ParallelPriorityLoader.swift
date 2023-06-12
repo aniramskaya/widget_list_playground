@@ -10,6 +10,8 @@ import Foundation
 public class ParallelPriorityLoader<Success, Failure: Swift.Error> {
     public typealias Element = AnyPriorityLoadingItem<Success, Failure>
     
+    public init () {}
+    
     public func load(
         items: [Element],
         mandatoryPriority: ParallelPriority,
@@ -77,6 +79,7 @@ private class InternalPriorityLoader<Success, Failure: Swift.Error> {
     }
 
     func load() {
+        RunLoop.main.add(timer, forMode: .default)
         for (index, item) in items.enumerated() {
             item.load { [weak self] result in
                 guard let self else { return }

@@ -28,7 +28,7 @@ final class WidgetListViewControllerTests: XCTestCase {
 }
 
 
-class WidgetSpy: UIViewController, UIWidget {
+class WidgetSpy: UIViewController, Widget {
     enum Message {
         case willMoveToParent
         case didMoveToParent

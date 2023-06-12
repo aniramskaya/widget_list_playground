@@ -22,7 +22,7 @@ class UserProfileWidgetListLoaderAdapter: WidgetListLoader {
             case let .success(dto):
                 self.priorityLoader.load(
                     items: dto.widgets.map { $0.widgetLoader },
-                    mandatoryPriorityLevel: .required,
+                    mandatoryPriority: .required,
                     timeout: 1.0) { result in
                         switch result {
                         case let .success(widgets):

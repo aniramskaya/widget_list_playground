@@ -12,12 +12,12 @@ public class ParallelPriorityLoader<Success, Failure: Swift.Error> {
     
     public func load(
         items: [Element],
-        mandatoryPriorityLevel: ParallelPriority,
+        mandatoryPriority: ParallelPriority,
         timeout: TimeInterval,
         completion: @escaping (Result<[Success?], Swift.Error>) -> Void
     ) {
         let id = UUID()
-        let loader = InternalPriorityLoader(items: items, mandatoryPriorityLevel: mandatoryPriorityLevel, timeout: timeout) { [weak self] result in
+        let loader = InternalPriorityLoader(items: items, mandatoryPriority: mandatoryPriority, timeout: timeout) { [weak self] result in
             completion(result)
             self?.removeLoader(id: id)
         }
@@ -53,19 +53,19 @@ private class InternalPriorityLoader<Success, Failure: Swift.Error> {
     
     private let items: [Element]
     private var results: [Success?]
-    private let mandatoryPriorityLevel: ParallelPriority
+    private let mandatoryPriority: ParallelPriority
     private let completion: (Result<[Success?], Swift.Error>) -> Void
     private let timer: Timer
 
     init(
         items: [Element],
-        mandatoryPriorityLevel: ParallelPriority,
+        mandatoryPriority: ParallelPriority,
         timeout: TimeInterval,
         completion: @escaping (Result<[Success?], Swift.Error>) -> Void
     ) {
         self.items = items
         self.results = [Success?](repeating: nil, count: items.count)
-        self.mandatoryPriorityLevel = mandatoryPriorityLevel
+        self.mandatoryPriority = mandatoryPriority
         self.timer = Timer(timeInterval: timeout, repeats: false, block: { _ in
             completion(.failure(ParallelizedLoaderError.timeoutExpired))
         })
@@ -82,7 +82,7 @@ private class InternalPriorityLoader<Success, Failure: Swift.Error> {
                 guard let self else { return }
                 switch result {
                 case .failure:
-                    if item.priority >= self.mandatoryPriorityLevel {
+                    if item.priority >= self.mandatoryPriority {
                         self.completion(.failure(ParallelizedLoaderError.requredLoadingFailed))
                         return
                     }
@@ -99,7 +99,7 @@ private class InternalPriorityLoader<Success, Failure: Swift.Error> {
     private func completeIfNeeded() {
         var areAllMandatoryFinished = true
         for (index, item) in items.enumerated() {
-            if item.priority >= mandatoryPriorityLevel {
+            if item.priority >= mandatoryPriority {
                 if results[index] == nil {
                     areAllMandatoryFinished = false
                 }

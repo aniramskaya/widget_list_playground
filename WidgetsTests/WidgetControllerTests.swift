@@ -55,6 +55,58 @@ final class WidgetListControllerTests: XCTestCase {
         }
     }
 
+    func test_widgetController_tracksWidgetVisibility() throws {
+        let (sut, spy) = makeSUT()
+        let widget1Id = UUID()
+        let widget2Id = UUID()
+        
+        let widget1 = WidgetStub(id: widget1Id).erasedToWidget()
+        let widget2 = WidgetStub(id: widget2Id).erasedToWidget()
+
+        sut.load()
+        spy.complete(with: .success([widget1, widget2]))
+        RunLoop.main.run(until: Date() + 0.1)
+
+        XCTAssertEqual(spy.messages, [.didStartLoading, .load, .didFinishLoadingSuccess([widget1Id, widget2Id])])
+        
+        widget1.isDisplaying.send(false)
+        RunLoop.main.run(until: Date() + 0.1)
+
+        XCTAssertEqual(spy.messages, [
+            .didStartLoading,
+            .load,
+            .didFinishLoadingSuccess([widget1Id, widget2Id]),
+            .didFinishLoadingSuccess([widget2Id])
+        ])
+    }
+    
+    func test_widgetController_callsPresenterOnlyOnceForMultipleWdgetsUpdates() throws {
+        let (sut, spy) = makeSUT()
+        let widget1Id = UUID()
+        let widget2Id = UUID()
+        
+        let widget1 = WidgetStub(id: widget1Id).erasedToWidget()
+        let widget2 = WidgetStub(id: widget2Id).erasedToWidget()
+        widget2.isDisplaying.send(false)
+
+        sut.load()
+        spy.complete(with: .success([widget1, widget2]))
+        RunLoop.main.run(until: Date() + 0.1)
+
+        XCTAssertEqual(spy.messages, [.didStartLoading, .load, .didFinishLoadingSuccess([widget1Id])])
+        
+        widget1.isDisplaying.send(false)
+        widget2.isDisplaying.send(true)
+        RunLoop.main.run(until: Date() + 0.1)
+
+        XCTAssertEqual(spy.messages, [
+            .didStartLoading,
+            .load,
+            .didFinishLoadingSuccess([widget1Id]),
+            .didFinishLoadingSuccess([widget2Id])
+        ])
+    }
+
     // MARK: Private
     
     private func makeSUT() -> (WidgetListController<WidgetSpy, WidgetSpy>, WidgetSpy) {

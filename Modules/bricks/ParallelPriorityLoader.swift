@@ -7,49 +7,12 @@
 
 import Foundation
 
-public enum ParallelizedLoaderPriority {
-    case required
-    case custom(UInt)
-    case optional
-    
-    func value() -> UInt {
-        switch self {
-        case .required: return UInt.max
-        case .optional: return UInt.min
-        case let.custom(value): return value
-        }
-    }
-}
-
-extension ParallelizedLoaderPriority: Comparable {
-    public static func > (lhs: Self, rhs: Self) -> Bool {
-        return lhs.value() > rhs.value()
-    }
-    
-    public static func >= (lhs: Self, rhs: Self) -> Bool {
-        return lhs.value() >= rhs.value()
-    }
-    
-    public static func < (lhs: Self, rhs: Self) -> Bool {
-        return lhs.value() < rhs.value()
-    }
-    
-    public static func <= (lhs: Self, rhs: Self) -> Bool {
-        return lhs.value() <= rhs.value()
-    }
-    
-    public static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs.value() == rhs.value()
-    }
-}
-
-
-public class ParallelizedLoaderWithPriority<Success, Failure: Swift.Error> {
+public class ParallelPriorityLoader<Success, Failure: Swift.Error> {
     public typealias Element = AnyPriorityLoadingItemBox<Success, Failure>
     
     public func load(
         items: [Element],
-        mandatoryPriorityLevel: ParallelizedLoaderPriority,
+        mandatoryPriorityLevel: ParallelPriority,
         timeout: TimeInterval,
         completion: @escaping (Result<[Success?], Swift.Error>) -> Void
     ) {
@@ -90,13 +53,13 @@ private class InternalPriorityLoader<Success, Failure: Swift.Error> {
     
     private let items: [Element]
     private var results: [Success?]
-    private let mandatoryPriorityLevel: ParallelizedLoaderPriority
+    private let mandatoryPriorityLevel: ParallelPriority
     private let completion: (Result<[Success?], Swift.Error>) -> Void
     private let timer: Timer
 
     init(
         items: [Element],
-        mandatoryPriorityLevel: ParallelizedLoaderPriority,
+        mandatoryPriorityLevel: ParallelPriority,
         timeout: TimeInterval,
         completion: @escaping (Result<[Success?], Swift.Error>) -> Void
     ) {

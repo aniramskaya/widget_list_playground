@@ -10,7 +10,7 @@ import Foundation
 public protocol PriorityLoadingItem {
     associatedtype Success
     associatedtype Failure: Swift.Error
-    var priority: ParallelizedLoaderPriority { get }
+    var priority: ParallelPriority { get }
     
     func load(_ completion: @escaping (Result<Success, Failure>) -> Void)
 }
@@ -20,7 +20,7 @@ public class AnyPriorityLoadingItem<Item: PriorityLoadingItem>: AnyPriorityLoadi
     init(base: Item) {
         self.base = base
     }
-    override var priority: ParallelizedLoaderPriority { base.priority }
+    override var priority: ParallelPriority { base.priority }
     
     override func load(_ completion: @escaping (Result<Item.Success, Item.Failure>) -> Void) {
         base.load(completion)
@@ -28,7 +28,7 @@ public class AnyPriorityLoadingItem<Item: PriorityLoadingItem>: AnyPriorityLoadi
 }
 
 public class AnyPriorityLoadingItemBox<Success, Failure: Error> {
-    var priority: ParallelizedLoaderPriority { fatalError() }
+    var priority: ParallelPriority { fatalError() }
     
     func load(_ completion: @escaping (Result<Success, Failure>) -> Void) {
         fatalError()

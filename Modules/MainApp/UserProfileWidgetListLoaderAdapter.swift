@@ -9,7 +9,7 @@ import UIKit
 
 class UserProfileWidgetListLoaderAdapter: WidgetListLoader {
     let dtoLoader: UserProfileWidgetsDTOLoader
-    let priorityLoader = ParallelizedLoaderWithPriority<AnyWidget<View>, Error>()
+    let priorityLoader = ParallelPriorityLoader<AnyWidget<View>, Error>()
     
     init(dtoLoader: UserProfileWidgetsDTOLoader) {
         self.dtoLoader = dtoLoader

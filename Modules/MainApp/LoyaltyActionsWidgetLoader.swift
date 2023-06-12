@@ -8,7 +8,7 @@
 import UIKit
 
 class LoyaltyActionsWidgetLoader: PriorityLoadingItem {
-    let priority = ParallelizedLoaderPriority.optional
+    let priority = ParallelPriority.optional
     let url: URL
     
     init(url: URL) {

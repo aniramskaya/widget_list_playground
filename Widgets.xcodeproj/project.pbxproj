@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC27C0F62A370EC800AF020E /* PriorityLoadingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC27C0F52A370EC800AF020E /* PriorityLoadingItem.swift */; };
 		CC5CB3EB2A30814800DCE080 /* Widgets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC5CB3E22A30814800DCE080 /* Widgets.framework */; };
 		CC5CB3F02A30814800DCE080 /* WidgetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB3EF2A30814800DCE080 /* WidgetsTests.swift */; };
 		CC5CB3F12A30814800DCE080 /* Widgets.h in Headers */ = {isa = PBXBuildFile; fileRef = CC5CB3E52A30814800DCE080 /* Widgets.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC27C0F52A370EC800AF020E /* PriorityLoadingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityLoadingItem.swift; sourceTree = "<group>"; };
 		CC5CB3E22A30814800DCE080 /* Widgets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Widgets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5CB3E52A30814800DCE080 /* Widgets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Widgets.h; sourceTree = "<group>"; };
 		CC5CB3EA2A30814800DCE080 /* WidgetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WidgetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +178,7 @@
 		CC5CB4372A33270C00DCE080 /* bricks */ = {
 			isa = PBXGroup;
 			children = (
+				CC27C0F52A370EC800AF020E /* PriorityLoadingItem.swift */,
 				CC5CB4222A320AED00DCE080 /* ParallelizedLoaderWithPriority.swift */,
 			);
 			path = bricks;
@@ -306,6 +309,7 @@
 				CC5CB41A2A31DB7B00DCE080 /* CdekIdWidget.swift in Sources */,
 				CC5CB4232A320AED00DCE080 /* ParallelizedLoaderWithPriority.swift in Sources */,
 				CCB6EDCC2A3342C300676C34 /* LoyaltyActionsWidgetLoader.swift in Sources */,
+				CC27C0F62A370EC800AF020E /* PriorityLoadingItem.swift in Sources */,
 				CC5CB4182A31BED800DCE080 /* PlaceholderViewController.swift in Sources */,
 				CC5CB4082A30AA5F00DCE080 /* Example.swift in Sources */,
 			);

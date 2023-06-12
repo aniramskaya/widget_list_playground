@@ -10,5 +10,5 @@ import Foundation
 public protocol WidgetListLoader {
     associatedtype View
     
-    func load(_ completion: @escaping (Result<[AnyWidgetBox<View>?], Error>) -> Void)
+    func load(_ completion: @escaping (Result<[AnyWidget<View>?], Error>) -> Void)
 }

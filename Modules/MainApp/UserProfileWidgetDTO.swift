@@ -33,7 +33,7 @@ enum UserProfileWidgetDTO: Decodable {
 }
 
 extension UserProfileWidgetDTO {
-    var widgetLoader: AnyPriorityLoadingItemBox<AnyWidgetBox<UIViewController>, Error> {
+    var widgetLoader: AnyPriorityLoadingItemBox<AnyWidget<UIViewController>, Error> {
         switch self {
         case let .loyaltyActions(dto):
             return LoyaltyActionsWidgetLoader(url: dto.url).eraseToAnyPriorityLoadingItem()

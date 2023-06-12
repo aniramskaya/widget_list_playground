@@ -10,7 +10,7 @@ import Combine
 
 public final class WidgetListController<Presenter: WidgetListPresenter, Loader: WidgetListLoader> where Loader.View == Presenter.View {
     
-    typealias Element = AnyWidgetBox<Presenter.View>
+    typealias Element = AnyWidget<Presenter.View>
     let presenter: Presenter
     let loader: Loader
     

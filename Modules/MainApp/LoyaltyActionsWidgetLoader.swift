@@ -15,7 +15,7 @@ class LoyaltyActionsWidgetLoader: PriorityLoadingItem {
         self.url = url
     }
     
-    func load(_ completion: @escaping (Result<AnyWidgetBox<UIViewController>, Error>) -> Void) {
+    func load(_ completion: @escaping (Result<AnyWidget<UIViewController>, Error>) -> Void) {
         let widget = LoyaltyActionsWidget()
         widget.configure(with: url) { error in
             if let error {

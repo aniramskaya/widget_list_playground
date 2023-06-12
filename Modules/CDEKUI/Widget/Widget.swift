@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-public protocol Widget<View> {
+public protocol Widget {
     associatedtype View
     
     var ui: View { get }
@@ -17,20 +17,34 @@ public protocol Widget<View> {
 
 
 // MARK: - Type erasure
-public class AnyWidgetBox<View> {
-    var ui: View { fatalError() }
-    var isDisplaying: CurrentValueSubject<Bool, Never> { fatalError() }
+
+public struct AnyWidget<View>: Widget {
+    
+    private class AnyWidgetBox<View> {
+        var ui: View { fatalError() }
+        var isDisplaying: CurrentValueSubject<Bool, Never> { fatalError() }
+    }
+
+    private class AnyWidgetBoxBase<P: Widget>: AnyWidgetBox<P.View> {
+        let base: P
+        override var ui: P.View { return base.ui }
+        override var isDisplaying: CurrentValueSubject<Bool, Never> { return base.isDisplaying }
+        init(_ base: P) { self.base = base }
+    }
+    
+    private let box: AnyWidgetBox<View>
+    
+    public init<T>(_ wrappee: T) where T: Widget, T.View == View {
+        box = AnyWidgetBoxBase(wrappee)
+    }
+
+    public var ui: View { box.ui }
+    public var isDisplaying: CurrentValueSubject<Bool, Never> { box.isDisplaying }
 }
 
-public class AnyWidgetBoxBase<P: Widget>: AnyWidgetBox<P.View> {
-    let base: P
-    override var ui: P.View { return base.ui }
-    override var isDisplaying: CurrentValueSubject<Bool, Never> { return base.isDisplaying }
-    init(_ base: P) { self.base = base }
-}
 
 extension Widget {
-    func erasedToWidget() -> AnyWidgetBox<View> {
-        return AnyWidgetBoxBase(self)
+    func erasedToWidget() -> AnyWidget<View> {
+        return AnyWidget(self)
     }
 }

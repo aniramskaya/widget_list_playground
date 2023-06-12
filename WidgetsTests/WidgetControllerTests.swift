@@ -49,10 +49,9 @@ final class WidgetListControllerTests: XCTestCase {
 
         sut.load()
         spy.complete(with: .success([WidgetStub(id: widgetId).erasedToWidget()]))
+        RunLoop.main.run(until: Date() + 0.1)
 
-        OperationQueue.main.addOperation {
-            XCTAssertEqual(spy.messages, [.didStartLoading, .load, .didFinishLoadingSuccess([widgetId])])
-        }
+        XCTAssertEqual(spy.messages, [.didStartLoading, .load, .didFinishLoadingSuccess([widgetId])])
     }
 
     func test_widgetController_tracksWidgetVisibility() throws {
@@ -113,7 +112,15 @@ final class WidgetListControllerTests: XCTestCase {
         let spy = WidgetSpy()
         let sut = WidgetListController(loader: spy, presenter: spy)
         
+        trackForMemoryLeaks(spy)
+        trackForMemoryLeaks(sut)
         return (sut, spy)
+    }
+    
+    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak.", file: file, line: line)
+        }
     }
 }
 

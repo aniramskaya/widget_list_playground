@@ -53,8 +53,8 @@ public final class WidgetListController<Presenter: WidgetListPresenter, Loader: 
         cancelWidgetUpdateIfNeeded()
         
         let updateOperation = BlockOperation()
-        updateOperation.addExecutionBlock { [unowned updateOperation] in
-            guard !updateOperation.isCancelled else { return }
+        updateOperation.addExecutionBlock { [unowned updateOperation, weak self] in
+            guard !updateOperation.isCancelled, let self else { return }
             let widgetsToDisplay = self.widgets
             self.presenter.didFinishLoading(with: widgetsToDisplay.filter({ $0.isDisplaying.value }).map({ $0.ui }))
         }

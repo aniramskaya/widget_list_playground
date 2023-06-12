@@ -8,7 +8,7 @@
 import Foundation
 
 public class ParallelPriorityLoader<Success, Failure: Swift.Error> {
-    public typealias Element = AnyPriorityLoadingItemBox<Success, Failure>
+    public typealias Element = AnyPriorityLoadingItem<Success, Failure>
     
     public func load(
         items: [Element],
@@ -49,7 +49,7 @@ public enum ParallelizedLoaderError: Error {
 }
 
 private class InternalPriorityLoader<Success, Failure: Swift.Error> {
-    typealias Element = AnyPriorityLoadingItemBox<Success, Failure>
+    typealias Element = AnyPriorityLoadingItem<Success, Failure>
     
     private let items: [Element]
     private var results: [Success?]

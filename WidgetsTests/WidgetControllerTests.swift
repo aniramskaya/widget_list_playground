@@ -14,7 +14,7 @@ import Combine
  [✅] Вызывает loader.load при старте загрузки
  [✅] Вызывает presenter.didStartLoading при старте загрузки
  [✅] Вызывает presenter.didFinishLoading(with: Error) при ошибке загрузки
- [] Вызывает presenter.didFinishLoading(with: [Widget]) при успешной загрузке
+ [✅] Вызывает presenter.didFinishLoading(with: [Widget]) при успешной загрузке
  [] При изменении видимости виджета вызывает presenter.didFinishLoading(with: [Widget])
  [] При одновременном изменении видимости нескольких виджетов вызывает presenter.didFinishLoading(with: [Widget]) только один раз
  
@@ -42,7 +42,19 @@ final class WidgetListControllerTests: XCTestCase {
         
         XCTAssertEqual(spy.messages, [.didStartLoading, .load, .didFinishLoadingFailure])
     }
-    
+
+    func test_load_deliversWidgetsOnLoadingSuccess() throws {
+        let (sut, spy) = makeSUT()
+        let widgetId = UUID()
+
+        sut.load()
+        spy.complete(with: .success([WidgetStub(id: widgetId).erasedToWidget()]))
+
+        OperationQueue.main.addOperation {
+            XCTAssertEqual(spy.messages, [.didStartLoading, .load, .didFinishLoadingSuccess([widgetId])])
+        }
+    }
+
     // MARK: Private
     
     private func makeSUT() -> (WidgetListController<WidgetSpy, WidgetSpy>, WidgetSpy) {
@@ -57,7 +69,7 @@ class WidgetStub: UIViewController, Widget {
     typealias View = UIViewController
     
     var ui: UIViewController { self }
-    var isDisplaying = CurrentValueSubject<Bool, Never>(false)
+    var isDisplaying = CurrentValueSubject<Bool, Never>(true)
     var id: UUID
     
     init(id: UUID) {
@@ -71,10 +83,10 @@ class WidgetStub: UIViewController, Widget {
 }
 
 class WidgetSpy: UIViewController, WidgetListPresenter, WidgetListLoader {
-    enum Message {
+    enum Message: Equatable {
         case load
         case didStartLoading
-        case didFinishLoadingSuccess
+        case didFinishLoadingSuccess([UUID])
         case didFinishLoadingFailure
     }
     
@@ -93,7 +105,7 @@ class WidgetSpy: UIViewController, WidgetListPresenter, WidgetListLoader {
     }
 
     func didFinishLoading(with resource: [UIViewController]) {
-        messages.append(.didFinishLoadingSuccess)
+        messages.append(.didFinishLoadingSuccess(resource.map { ($0 as! WidgetStub).id }))
     }
     
     // MARK: - WidgetListLoader

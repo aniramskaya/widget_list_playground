@@ -13,7 +13,7 @@ import Combine
 /**
  [✅] Вызывает loader.load при старте загрузки
  [✅] Вызывает presenter.didStartLoading при старте загрузки
- [] Вызывает presenter.didFinishLoading(with: Error) при ошибке загрузки
+ [✅] Вызывает presenter.didFinishLoading(with: Error) при ошибке загрузки
  [] Вызывает presenter.didFinishLoading(with: [Widget]) при успешной загрузке
  [] При изменении видимости виджета вызывает presenter.didFinishLoading(with: [Widget])
  [] При одновременном изменении видимости нескольких виджетов вызывает presenter.didFinishLoading(with: [Widget]) только один раз
@@ -32,6 +32,15 @@ final class WidgetListControllerTests: XCTestCase {
         sut.load()
         
         XCTAssertEqual(spy.messages, [.didStartLoading, .load])
+    }
+
+    func test_load_deliversErrorOnLoadingError() throws {
+        let (sut, spy) = makeSUT()
+
+        sut.load()
+        spy.complete(with: .failure(NSError.any()))
+        
+        XCTAssertEqual(spy.messages, [.didStartLoading, .load, .didFinishLoadingFailure])
     }
     
     // MARK: Private

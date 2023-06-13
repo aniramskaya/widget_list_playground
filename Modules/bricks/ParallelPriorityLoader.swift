@@ -7,8 +7,14 @@
 
 import Foundation
 
-public class ParallelPriorityLoader<Success, Failure: Swift.Error> {
-    public typealias Element = AnyPriorityLoadingItem<Success, Failure>
+public enum ParallelizedLoaderError: Error {
+    case requredLoadingFailed
+    case timeoutExpired
+}
+
+public class ParallelPriorityLoader<Success> {
+    public typealias Failure = ParallelizedLoaderError
+    public typealias Element = AnyPriorityLoadingItem<Success, Swift.Error>
     
     public init () {}
     
@@ -16,7 +22,7 @@ public class ParallelPriorityLoader<Success, Failure: Swift.Error> {
         items: [Element],
         mandatoryPriority: ParallelPriority,
         timeout: TimeInterval,
-        completion: @escaping (Result<[Success?], Swift.Error>) -> Void
+        completion: @escaping (Result<[Success?], Failure>) -> Void
     ) {
         let id = UUID()
         let loader = InternalPriorityLoader(items: items, mandatoryPriority: mandatoryPriority, timeout: timeout) { [weak self] result in
@@ -29,10 +35,10 @@ public class ParallelPriorityLoader<Success, Failure: Swift.Error> {
     
     // MARK: - Private
     
-    private var executingLoaders: [UUID: InternalPriorityLoader<Success, Failure>] = [:]
+    private var executingLoaders: [UUID: InternalPriorityLoader<Success>] = [:]
     private var executingLoadersLock = NSRecursiveLock()
     
-    private func addLoader(_ loader: InternalPriorityLoader<Success, Failure>, id: UUID) {
+    private func addLoader(_ loader: InternalPriorityLoader<Success>, id: UUID) {
         executingLoadersLock.lock()
         executingLoaders[id] = loader
         executingLoadersLock.unlock()
@@ -45,25 +51,21 @@ public class ParallelPriorityLoader<Success, Failure: Swift.Error> {
     }
 }
 
-public enum ParallelizedLoaderError: Error {
-    case requredLoadingFailed
-    case timeoutExpired
-}
-
-private class InternalPriorityLoader<Success, Failure: Swift.Error> {
-    typealias Element = AnyPriorityLoadingItem<Success, Failure>
+private class InternalPriorityLoader<Success> {
+    typealias Failure = ParallelizedLoaderError
+    typealias Element = AnyPriorityLoadingItem<Success, Swift.Error>
     
     private let items: [Element]
     private var results: [Success?]
     private let mandatoryPriority: ParallelPriority
-    private let completion: (Result<[Success?], Swift.Error>) -> Void
+    private let completion: (Result<[Success?], Failure>) -> Void
     private let timer: Timer
 
     init(
         items: [Element],
         mandatoryPriority: ParallelPriority,
         timeout: TimeInterval,
-        completion: @escaping (Result<[Success?], Swift.Error>) -> Void
+        completion: @escaping (Result<[Success?], Failure>) -> Void
     ) {
         self.items = items
         self.results = [Success?](repeating: nil, count: items.count)

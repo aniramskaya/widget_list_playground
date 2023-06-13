@@ -31,7 +31,7 @@ class ParallelPriorityLoaderTests: XCTestCase {
     
     func test_load_deliversRequiredLoadingErrorWhenOverMandatoryFails() {
         let (high, med, low) = makeItems()
-        let sut = ParallelPriorityLoader<UUID, NSError>()
+        let sut = ParallelPriorityLoader<UUID>()
 
         expect(
             sut: sut,
@@ -44,7 +44,7 @@ class ParallelPriorityLoaderTests: XCTestCase {
     
     func test_load_deliversRequiredLoadingErrorWhenMandatoryFails() {
         let (high, med, low) = makeItems()
-        let sut = ParallelPriorityLoader<UUID, NSError>()
+        let sut = ParallelPriorityLoader<UUID>()
 
         expect(
             sut: sut,
@@ -57,7 +57,7 @@ class ParallelPriorityLoaderTests: XCTestCase {
 
     func test_load_deliversTimeoutErrorWhenAtLeaseOneMandatoryTimedOut() {
         let (high, med, low) = makeItems()
-        let sut = ParallelPriorityLoader<UUID, NSError>()
+        let sut = ParallelPriorityLoader<UUID>()
 
         expect(
             sut: sut,
@@ -73,7 +73,7 @@ class ParallelPriorityLoaderTests: XCTestCase {
 
     func test_load_deliversSuccessWhenMandatorySucceeded() {
         let (high, med, low) = makeItems()
-        let sut = ParallelPriorityLoader<UUID, NSError>()
+        let sut = ParallelPriorityLoader<UUID>()
 
         let highSuccess = UUID()
         let medSuccess = UUID()
@@ -90,7 +90,7 @@ class ParallelPriorityLoaderTests: XCTestCase {
     }
 
     func test_loadTwice_deliversDistinctResults() {
-        let sut = ParallelPriorityLoader<UUID, NSError>()
+        let sut = ParallelPriorityLoader<UUID>()
 
         let (high1, med1, low1) = makeItems()
         let (high2, med2, low2) = makeItems()
@@ -98,12 +98,12 @@ class ParallelPriorityLoaderTests: XCTestCase {
         let exp = expectation(description: "Wait for loading to complete")
         exp.expectedFulfillmentCount = 2
         
-        var load1Result: Result<[UUID?], Error>?
+        var load1Result: Result<[UUID?], ParallelizedLoaderError>?
         sut.load(items: [high1, med1, low1].erased, mandatoryPriority: .custom(Constants.mandtoryPriority), timeout: 0.5) { result in
             load1Result = result
             exp.fulfill()
         }
-        var load2Result: Result<[UUID?], Error>?
+        var load2Result: Result<[UUID?], ParallelizedLoaderError>?
         sut.load(items: [high2, med2, low2].erased, mandatoryPriority: .custom(Constants.mandtoryPriority), timeout: 0.5) { result in
             load2Result = result
             exp.fulfill()
@@ -121,7 +121,7 @@ class ParallelPriorityLoaderTests: XCTestCase {
     }
     
     func test_load_doesNotCallCompleteWhenSUTDeallocated() {
-        var sut: ParallelPriorityLoader<UUID, NSError>? = ParallelPriorityLoader<UUID, NSError>()
+        var sut: ParallelPriorityLoader<UUID>? = ParallelPriorityLoader<UUID>()
         
         let (high, med, low) = makeItems()
         
@@ -144,7 +144,7 @@ class ParallelPriorityLoaderTests: XCTestCase {
         )
     }
     
-    private func expect(sut: ParallelPriorityLoader<UUID, NSError>, loads items: [AnyPriorityLoadingItem<UUID, NSError>], timeout: TimeInterval, when action: () -> Void, toCompleteWith expectedResult: Result<[UUID?], Error>) {
+    private func expect(sut: ParallelPriorityLoader<UUID>, loads items: [AnyPriorityLoadingItem<UUID, Error>], timeout: TimeInterval, when action: () -> Void, toCompleteWith expectedResult: Result<[UUID?], ParallelizedLoaderError>) {
         let exp = expectation(description: "Wait for loading to complete")
         sut.load(
             items: items,
@@ -159,7 +159,7 @@ class ParallelPriorityLoaderTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
 
-    private func assertEqual(result: Result<[UUID?], Error>?, expected: Result<[UUID?], Error>) {
+    private func assertEqual(result: Result<[UUID?], ParallelizedLoaderError>?, expected: Result<[UUID?], ParallelizedLoaderError>) {
         guard let result else {
             XCTFail("Expected non-nil result")
             return
@@ -177,12 +177,12 @@ class ParallelPriorityLoaderTests: XCTestCase {
 }
 
 private extension Array where Element == ParallelPriorityItemSpy {
-    var erased: [AnyPriorityLoadingItem<UUID, NSError>] { self.map { $0.eraseToAnyPriorityLoadingItem() } }
+    var erased: [AnyPriorityLoadingItem<UUID, Error>] { self.map { $0.eraseToAnyPriorityLoadingItem() } }
 }
 
 private class ParallelPriorityItemSpy: PriorityLoadingItem {
     typealias Success = UUID
-    typealias Failure = NSError
+    typealias Failure = Swift.Error
     
     let priority: Widgets.ParallelPriority
     
@@ -194,14 +194,14 @@ private class ParallelPriorityItemSpy: PriorityLoadingItem {
         case load
     }
     var messages: [Message] = []
-    var completions: [(Result<UUID, NSError>) -> Void] = []
+    var completions: [(Result<UUID, Error>) -> Void] = []
     
-    func load(_ completion: @escaping (Result<UUID, NSError>) -> Void) {
+    func load(_ completion: @escaping (Result<UUID, Error>) -> Void) {
         messages.append(.load)
         completions.append(completion)
     }
     
-    func complete(with result: Result<UUID, NSError>, at index: Int = 0) {
+    func complete(with result: Result<UUID, Error>, at index: Int = 0) {
         completions[index](result)
     }
 }

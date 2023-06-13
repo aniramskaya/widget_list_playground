@@ -92,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC27C1032A38212700AF020E /* StackViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CC5CB3FC2A3082C600DCE080 /* StackViewController.swift */,
+			);
+			path = StackViewController;
+			sourceTree = "<group>";
+		};
 		CC5CB3D82A30814800DCE080 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				CC5CB4122A31BE5F00DCE080 /* ResourceLoadingViewController */,
+				CC27C1032A38212700AF020E /* StackViewController */,
 				CC5CB4112A31BE5000DCE080 /* Widget */,
 			);
 			path = CDEKUI;
@@ -169,7 +178,6 @@
 				CC9A47F52A345584005EB35F /* WidgetListPresenter.swift */,
 				CC9A47F32A345559005EB35F /* WidgetListLoader.swift */,
 				CC5CB4352A33146F00DCE080 /* WidgetListController.swift */,
-				CC5CB3FC2A3082C600DCE080 /* StackViewController.swift */,
 				CC5CB4052A30A1DA00DCE080 /* WidgetListDTO.swift */,
 			);
 			path = Widget;

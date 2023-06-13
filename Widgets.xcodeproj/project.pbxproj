@@ -10,6 +10,8 @@
 		CC27C0F62A370EC800AF020E /* PriorityLoadingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC27C0F52A370EC800AF020E /* PriorityLoadingItem.swift */; };
 		CC27C0F82A370F4600AF020E /* ParallelPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC27C0F72A370F4600AF020E /* ParallelPriority.swift */; };
 		CC27C0FA2A37140F00AF020E /* ParallelPriorityLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC27C0F92A37140F00AF020E /* ParallelPriorityLoaderTests.swift */; };
+		CC27C0FF2A376D6A00AF020E /* StackViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC27C0FE2A376D6A00AF020E /* StackViewControllerTests.swift */; };
+		CC27C1022A3784D100AF020E /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC27C1002A37848A00AF020E /* UIView+Extensions.swift */; };
 		CC5CB3EB2A30814800DCE080 /* Widgets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC5CB3E22A30814800DCE080 /* Widgets.framework */; };
 		CC5CB3F02A30814800DCE080 /* WidgetControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5CB3EF2A30814800DCE080 /* WidgetControllerTests.swift */; };
 		CC5CB3F12A30814800DCE080 /* Widgets.h in Headers */ = {isa = PBXBuildFile; fileRef = CC5CB3E52A30814800DCE080 /* Widgets.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,6 +48,8 @@
 		CC27C0F52A370EC800AF020E /* PriorityLoadingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityLoadingItem.swift; sourceTree = "<group>"; };
 		CC27C0F72A370F4600AF020E /* ParallelPriority.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelPriority.swift; sourceTree = "<group>"; };
 		CC27C0F92A37140F00AF020E /* ParallelPriorityLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParallelPriorityLoaderTests.swift; sourceTree = "<group>"; };
+		CC27C0FE2A376D6A00AF020E /* StackViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewControllerTests.swift; sourceTree = "<group>"; };
+		CC27C1002A37848A00AF020E /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		CC5CB3E22A30814800DCE080 /* Widgets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Widgets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5CB3E52A30814800DCE080 /* Widgets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Widgets.h; sourceTree = "<group>"; };
 		CC5CB3EA2A30814800DCE080 /* WidgetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WidgetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +127,7 @@
 			children = (
 				CC5CB3EF2A30814800DCE080 /* WidgetControllerTests.swift */,
 				CC27C0F92A37140F00AF020E /* ParallelPriorityLoaderTests.swift */,
+				CC27C0FE2A376D6A00AF020E /* StackViewControllerTests.swift */,
 			);
 			path = WidgetsTests;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 				CC5CB4132A31BEA400DCE080 /* LoadResourceViewController.swift */,
 				CC5CB4142A31BEA400DCE080 /* LoadResourcePresenter.swift */,
 				CC5CB4172A31BED800DCE080 /* PlaceholderViewController.swift */,
+				CC27C1002A37848A00AF020E /* UIView+Extensions.swift */,
 			);
 			path = ResourceLoadingViewController;
 			sourceTree = "<group>";
@@ -302,6 +308,7 @@
 			files = (
 				CC5CB3FD2A3082C600DCE080 /* StackViewController.swift in Sources */,
 				CC9A47F22A334905005EB35F /* UserProfileWidgetListLoaderAdapter.swift in Sources */,
+				CC27C1022A3784D100AF020E /* UIView+Extensions.swift in Sources */,
 				CC5CB4062A30A1DA00DCE080 /* WidgetListDTO.swift in Sources */,
 				CC27C0F82A370F4600AF020E /* ParallelPriority.swift in Sources */,
 				CCB6EDCE2A3342E000676C34 /* CdekIdWidgetLoader.swift in Sources */,
@@ -328,6 +335,7 @@
 			files = (
 				CC5CB3F02A30814800DCE080 /* WidgetControllerTests.swift in Sources */,
 				CC27C0FA2A37140F00AF020E /* ParallelPriorityLoaderTests.swift in Sources */,
+				CC27C0FF2A376D6A00AF020E /* StackViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
